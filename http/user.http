@@ -1,1 +1,31 @@
-GET
+GET http://localhost:8000/users
+
+###
+
+GET http://localhost:8000/users/d841f9bb-5f7a-4d61-ae7a-841ea5c779d8
+
+
+###
+
+POST  http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "pseudo": "Ryo",
+    "password": "toto"
+}
+
+###
+
+POST  http://localhost:8000/users/login
+Content-Type: application/json
+
+{
+    "pseudo": "Ryo",
+    "password": "toto"
+}
+
+###
+
+PUT  http://localhost:8000/users/d841f9bb-5f7a-4d61-ae7a-841ea5c779d8/level
+

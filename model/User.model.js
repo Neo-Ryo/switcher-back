@@ -43,4 +43,4 @@ User.prototype.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-module.export = User;
+module.exports = User;

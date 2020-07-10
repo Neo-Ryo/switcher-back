@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-const app = express();
 const cors = require("cors");
 const helmet = require("helmet");
 
@@ -8,7 +7,9 @@ const sequelize = require("./sequelize");
 
 const user = require("./routes/user.route");
 
+const app = express();
 const PORT = process.env.PORT || 4545;
+const env = process.env.NODE_ENV;
 
 app.use(cors());
 app.use(helmet());
@@ -27,7 +28,8 @@ async function main() {
     console.log("You've reached switcher DB !");
     app.listen(PORT, (err) => {
       if (err) throw new Error(err.message);
-      console.log(`Server is runin on http://localhost:${PORT}`);
+      env !== "production" &&
+        console.log(`Server is runin on http://localhost:${PORT}`);
     });
   } catch (err) {
     console.log("Unable to join DB", err.message);

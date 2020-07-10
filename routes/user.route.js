@@ -8,7 +8,7 @@ const regExIntChck = require("../middleware/regexCheck");
 const { uuidv4RegExp } = require("../middleware/regexCheck");
 const auth = require("../middleware/auth");
 
-const User = require("../model/User");
+const User = require("../model/User.model");
 
 user.get("/", async (req, res) => {
   try {
@@ -29,6 +29,27 @@ user.get("/:uuid", regExIntChck(uuidv4RegExp), async (req, res) => {
   } catch (error) {
     res.status(404).json(error);
   }
+});
+
+user.post("/", async (req, res) => {
+  const { pseudo, password } = req.body;
+  try {
+    const user = await User.create({
+      pseudo,
+      password,
+      level: 0,
+    });
+    const token = jwt.sign(
+      {
+        id: user.dataValues.uuid,
+        email: user.dataValues.email,
+      },
+      process.env.SECRET,
+      { expiresIn: "1h" }
+    );
+    const uuid = user.uuid;
+    res.status(201).json({ token, uuid });
+  } catch (error) {}
 });
 
 user.post("/login", async (req, res) => {
@@ -52,10 +73,10 @@ user.post("/login", async (req, res) => {
   }
 });
 
-user.post("/:uuid/level", regExIntChck(uuidv4RegExp), async (req, res) => {
+user.put("/:uuid/level", regExIntChck(uuidv4RegExp), async (req, res) => {
   const { uuid } = req.params;
   try {
-    const user = await User.update({ level: level + 1 });
+    const user = await User.increment("level");
   } catch (error) {
     res.status(204).end();
   }

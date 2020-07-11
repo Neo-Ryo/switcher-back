@@ -2,6 +2,10 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+// const Sequelize = require("sequelize");
+// const sequelize = new Sequelize(process.env.DATABASE_URL, {
+//   dialect: "postgres",
+// });
 
 const sequelize = require("./sequelize");
 
@@ -23,7 +27,7 @@ app.get("/", function (req, res) {
 
 async function main() {
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.sync();
     await sequelize.authenticate();
     console.log("You've reached switcher DB !");
     app.listen(PORT, (err) => {

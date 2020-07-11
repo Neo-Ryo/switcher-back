@@ -9,6 +9,7 @@ const { uuidv4RegExp } = require("../middleware/regexCheck");
 const auth = require("../middleware/auth");
 
 const User = require("../model/User.model");
+const { Sequelize } = require("sequelize");
 
 user.get("/", async (req, res) => {
   try {
@@ -42,7 +43,7 @@ user.post("/", async (req, res) => {
     const token = jwt.sign(
       {
         id: user.dataValues.uuid,
-        email: user.dataValues.email,
+        pseudo: user.dataValues.pseudo,
       },
       process.env.SECRET,
       { expiresIn: "1h" }
@@ -53,32 +54,33 @@ user.post("/", async (req, res) => {
 });
 
 user.post("/login", async (req, res) => {
-  const { email, password } = req.body;
+  const { pseudo, password } = req.body;
   try {
-    const user = await User.findOne({ where: { email } });
+    const user = await User.findOne({ where: { pseudo } });
     if (user.validatePassword(password)) {
       const token = jwt.sign(
         {
           id: user.dataValues.uuid,
-          email: user.dataValues.email,
+          pseudo: user.dataValues.pseudo,
         },
         process.env.SECRET,
         { expiresIn: "2h" }
       );
       const uuid = user.uuid;
-      res.status(201).json({ token, uuid });
+      res.status(200).json({ token, uuid });
     }
   } catch (error) {
     res.status(400).json(error);
   }
 });
 
-user.put("/:uuid/level", regExIntChck(uuidv4RegExp), async (req, res) => {
+user.post("/:uuid/level", regExIntChck(uuidv4RegExp), async (req, res) => {
   const { uuid } = req.params;
   try {
-    const user = await User.increment("level");
-  } catch (error) {
+    const user = await User.increment({ level: 1 }, { where: { uuid } });
     res.status(204).end();
+  } catch (error) {
+    res.status(400).json(error);
   }
 });
 module.exports = user;

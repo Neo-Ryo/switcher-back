@@ -2,7 +2,7 @@ GET http://localhost:8000/users
 
 ###
 
-GET http://localhost:8000/users/d841f9bb-5f7a-4d61-ae7a-841ea5c779d8
+GET http://localhost:8000/users/e66b1eff-0741-43a7-9664-676939c18bad
 
 
 ###
@@ -27,5 +27,5 @@ Content-Type: application/json
 
 ###
 
-PUT  http://localhost:8000/users/d841f9bb-5f7a-4d61-ae7a-841ea5c779d8/level
+POST  http://localhost:8000/users/04359cd0-e0a8-4e6f-81be-c2d562148115/level
 

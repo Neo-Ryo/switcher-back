@@ -36,16 +36,16 @@ user.post("/", async (req, res) => {
       pseudo,
       password,
     });
-    const token = jwt.sign(
-      {
-        id: user.dataValues.uuid,
-        pseudo: user.dataValues.pseudo,
-      },
-      process.env.SECRET,
-      { expiresIn: "1h" }
-    );
+    // const token = jwt.sign(
+    //   {
+    //     id: user.dataValues.uuid,
+    //     pseudo: user.dataValues.pseudo,
+    //   },
+    //   process.env.SECRET,
+    //   { expiresIn: "1h" }
+    // );
     const uuid = user.uuid;
-    res.status(201).json({ token, uuid });
+    res.status(201).json({ uuid });
   } catch (error) {}
 });
 
@@ -54,16 +54,16 @@ user.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ where: { pseudo } });
     if (user.validatePassword(password)) {
-      const token = jwt.sign(
-        {
-          id: user.dataValues.uuid,
-          pseudo: user.dataValues.pseudo,
-        },
-        process.env.SECRET,
-        { expiresIn: "2h" }
-      );
+      // const token = jwt.sign(
+      //   {
+      //     id: user.dataValues.uuid,
+      //     pseudo: user.dataValues.pseudo,
+      //   },
+      //   process.env.SECRET,
+      //   { expiresIn: "2h" }
+      // );
       const uuid = user.uuid;
-      res.status(200).json({ token, uuid });
+      res.status(200).json({ uuid });
     }
   } catch (error) {
     res.status(400).json(error);

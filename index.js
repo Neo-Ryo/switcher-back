@@ -30,8 +30,8 @@ async function main() {
     console.log("You've reached switcher DB !");
     app.listen(PORT, (err) => {
       if (err) throw new Error(err.message);
-      env !== "production" &&
-        console.log(`Server is runin on http://localhost:${PORT}`);
+      // env !== "production" &&
+      console.log(`Server is runin on http://localhost:${PORT}`);
     });
   } catch (err) {
     console.log("Unable to join DB", err.message);

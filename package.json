@@ -1,12 +1,15 @@
 {
   "name": "switcher-back",
   "version": "1.0.0",
-  "description": "",
+  "description": "API of switcher game",
   "main": "index.js",
+  "engines": {
+    "node": "12.16.1"
+  }
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "start": "NODE_ENV=production node index.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",

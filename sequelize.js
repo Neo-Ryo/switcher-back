@@ -16,13 +16,12 @@ if (process.env.DATABASE_URL) {
     dialect: "postgres",
   });
 } else {
-  PORT,
-    (module.exports = new Sequelize({
-      host: DB_HOST,
-      username: DB_USER,
-      password: DB_PASSWORD,
-      database: NODE_ENV !== "test" ? DB_DATABASE : DB_TEST,
-      dialect: DB_DIALECT,
-      logging: false,
-    }));
+  module.exports = new Sequelize({
+    host: DB_HOST,
+    username: DB_USER,
+    password: DB_PASSWORD,
+    database: NODE_ENV !== "test" ? DB_DATABASE : DB_TEST,
+    dialect: DB_DIALECT,
+    logging: false,
+  });
 }

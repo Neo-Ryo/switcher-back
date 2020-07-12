@@ -1,6 +1,5 @@
 require("dotenv").config();
 const Sequelize = require("sequelize");
-// DATABASE_URL=https://blooming-lowlands-46691.herokuapp.com
 const {
   DB_DATABASE,
   DB_USER,

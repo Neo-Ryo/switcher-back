@@ -8,7 +8,6 @@ const {
   DB_DIALECT,
   DB_TEST,
   DB_HOST,
-  PORT,
 } = process.env;
 
 if (process.env.DATABASE_URL) {

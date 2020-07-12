@@ -12,7 +12,7 @@ const {
 
 if (process.env.DATABASE_URL) {
   module.exports = new Sequelize(process.env.DATABASE_URL, {
-    dialect: "postgres",
+    dialect: "mysql",
   });
 } else {
   module.exports = new Sequelize({

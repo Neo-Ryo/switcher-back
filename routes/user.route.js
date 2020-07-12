@@ -1,15 +1,12 @@
 const express = require("express");
-const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const user = express.Router();
 
 const regExIntChck = require("../middleware/regexCheck");
 const { uuidv4RegExp } = require("../middleware/regexCheck");
-const auth = require("../middleware/auth");
 
 const User = require("../model/User.model");
-const { Sequelize } = require("sequelize");
 
 user.get("/", async (req, res) => {
   try {

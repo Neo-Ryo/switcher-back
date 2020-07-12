@@ -35,7 +35,6 @@ user.post("/", async (req, res) => {
     const user = await User.create({
       pseudo,
       password,
-      level: 0,
     });
     const token = jwt.sign(
       {

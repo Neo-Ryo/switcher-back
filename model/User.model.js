@@ -25,7 +25,7 @@ const User = sequelizeInstance.define(
     },
     level: {
       type: Sequelize.INTEGER,
-      allowNull: false,
+      defaultValue: 0,
     },
   },
   {

@@ -1,6 +1,6 @@
 require("dotenv").config();
 const Sequelize = require("sequelize");
-
+// DATABASE_URL=https://blooming-lowlands-46691.herokuapp.com
 const {
   DB_DATABASE,
   DB_USER,
@@ -9,7 +9,6 @@ const {
   DB_DIALECT,
   DB_TEST,
   DB_HOST,
-  DATABASE_URL,
 } = process.env;
 
 if (process.env.DATABASE_URL) {
@@ -17,7 +16,7 @@ if (process.env.DATABASE_URL) {
     dialect: "postgres",
   });
 } else {
-  module.exports = new Sequelize(DATABASE_URL, {
+  module.exports = new Sequelize({
     host: DB_HOST,
     username: DB_USER,
     password: DB_PASSWORD,

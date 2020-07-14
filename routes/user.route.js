@@ -64,6 +64,8 @@ user.post("/login", async (req, res) => {
       // );
       const uuid = user.uuid;
       res.status(200).json({ uuid });
+    } else {
+      throw Error.error;
     }
   } catch (error) {
     res.status(400).json(error);

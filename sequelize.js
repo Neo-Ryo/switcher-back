@@ -5,7 +5,6 @@ const {
   DB_USER,
   DB_PASSWORD,
   NODE_ENV,
-  DB_DIALECT,
   DB_TEST,
   DB_HOST,
 } = process.env;

@@ -2,7 +2,7 @@ GET http://localhost:8000/users
 
 ###
 
-GET http://localhost:8000/users/e8a2d12b-020e-4f7b-aafd-17383e4941b6
+GET http://localhost:8000/users/67a6d0c4-ccdb-411c-9cd4-857ed6c49114
 
 ###
 
@@ -26,7 +26,7 @@ Content-Type: application/json
 
 ###
 
-POST  http://localhost:8000/users/e8a2d12b-020e-4f7b-aafd-17383e4941b6/level
+POST  http://localhost:8000/users/67a6d0c4-ccdb-411c-9cd4-857ed6c49114/level
 
 ###
 GET https://switcher-fr-api.herokuapp.com/users

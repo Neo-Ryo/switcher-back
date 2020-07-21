@@ -30,11 +30,12 @@ user.get("/:uuid", regExIntChck(uuidv4RegExp), async (req, res) => {
 });
 
 user.post("/", async (req, res) => {
-  const { pseudo, password } = req.body;
+  const { pseudo, password, picture } = req.body;
   try {
     const user = await User.create({
       pseudo,
       password,
+      picture,
     });
     // const token = jwt.sign(
     //   {

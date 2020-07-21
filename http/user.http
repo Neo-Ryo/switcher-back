@@ -11,7 +11,8 @@ Content-Type: application/json
 
 {
     "pseudo": "Ryo",
-    "password": "toto"
+    "password": "toto",
+    "picture": "https://i.imgur.com/fywaJZk.jpg"
 }
 
 ###

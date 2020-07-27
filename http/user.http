@@ -2,7 +2,7 @@ GET http://localhost:8000/users
 
 ###
 
-GET http://localhost:8000/users/67a6d0c4-ccdb-411c-9cd4-857ed6c49114
+GET http://localhost:8000/users/3f378908-f83b-4f94-8651-e062ae9f23fe
 
 ###
 

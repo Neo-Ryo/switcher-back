@@ -23,10 +23,10 @@ const User = sequelizeInstance.define(
       type: Sequelize.STRING,
       allowNull: true,
     },
-    level: {
-      type: Sequelize.INTEGER,
-      defaultValue: 1,
-    },
+    // level: {
+    //   type: Sequelize.INTEGER,
+    //   defaultValue: 1,
+    // },
   },
   {
     hooks: {

@@ -2,7 +2,17 @@ GET http://localhost:8000/users
 
 ###
 
-GET http://localhost:8000/users/3f378908-f83b-4f94-8651-e062ae9f23fe
+GET http://localhost:8000/users/cdbd39f5-cfa3-4db5-a3ab-5cc5796cedb1
+###
+
+POST  http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "pseudo": "Michel1",
+    "password": "toto",
+    "picture": "https://i.imgur.com/fywaJZk.jpg"
+}
 
 ###
 
@@ -10,7 +20,7 @@ POST  http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "pseudo": "Ryo",
+    "pseudo": "Toto",
     "password": "toto",
     "picture": "https://i.imgur.com/fywaJZk.jpg"
 }

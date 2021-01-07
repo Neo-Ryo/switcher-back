@@ -1,0 +1,12 @@
+POST http://localhost:8000/levels/1e1da7aa-57e0-4ca7-9996-24b647f648e3
+###
+
+GET http://localhost:8000/levels/1e1da7aa-57e0-4ca7-9996-24b647f648e3
+
+###
+
+GET http://localhost:8000/levels
+
+###
+
+PUT http://localhost:8000/levels/77240abe-d3a5-4f16-ae4c-ce98995c92b6/levelUp

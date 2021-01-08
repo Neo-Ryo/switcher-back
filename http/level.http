@@ -1,7 +1,8 @@
-POST http://localhost:8000/levels/1e1da7aa-57e0-4ca7-9996-24b647f648e3
+POST http://localhost:8000/levels/91eb98fd-36f3-45f8-8e45-e71daf9703eb
 ###
 
-GET http://localhost:8000/levels/1e1da7aa-57e0-4ca7-9996-24b647f648e3
+GET http://localhost:8000/levels/cdbd39f5-cfa3-4db5-a3ab-5cc5796cedb1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNkYmQzOWY1LWNmYTMtNGRiNS1hM2FiLTVjYzU3OTZjZWRiMSIsInBzZXVkbyI6Ik5lby1SeW8iLCJpYXQiOjE2MTAxMTE2OTcsImV4cCI6MTYxMDE5ODA5N30.IN4Ya34PFon28jQrMDugZHjhaXsx8YMma5QIedRTUik
 
 ###
 
@@ -9,4 +10,5 @@ GET http://localhost:8000/levels
 
 ###
 
-PUT http://localhost:8000/levels/77240abe-d3a5-4f16-ae4c-ce98995c92b6/levelUp
+PUT http://localhost:8000/levels/cdbd39f5-cfa3-4db5-a3ab-5cc5796cedb1/levelUp
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNkYmQzOWY1LWNmYTMtNGRiNS1hM2FiLTVjYzU3OTZjZWRiMSIsInBzZXVkbyI6Ik5lby1SeW8iLCJpYXQiOjE2MTAxMTE2OTcsImV4cCI6MTYxMDE5ODA5N30.IN4Ya34PFon28jQrMDugZHjhaXsx8YMma5QIedRTUik

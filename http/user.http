@@ -3,6 +3,8 @@ GET http://localhost:8000/users
 ###
 
 GET http://localhost:8000/users/cdbd39f5-cfa3-4db5-a3ab-5cc5796cedb1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNkYmQzOWY1LWNmYTMtNGRiNS1hM2FiLTVjYzU3OTZjZWRiMSIsInBzZXVkbyI6Ik5lby1SeW8iLCJpYXQiOjE2MTAxMTY3MzgsImV4cCI6MTYxMDIwMzEzOH0.8qyVHzrQzDWLYwqpVy9_JKtUQnBkhXutALaHy7XgmGg
+
 ###
 
 POST  http://localhost:8000/users
@@ -31,7 +33,7 @@ POST  http://localhost:8000/users/login
 Content-Type: application/json
 
 {
-    "pseudo": "Ryo",
+    "pseudo": "Neo-Ryo",
     "password": "toto"
 }
 

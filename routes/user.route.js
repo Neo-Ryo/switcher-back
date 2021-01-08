@@ -6,6 +6,7 @@ const user = express.Router()
 
 const regExIntChck = require('../middleware/regexCheck')
 const { uuidv4RegExp } = require('../middleware/regexCheck')
+const auth = require('../middleware/auth')
 
 const User = require('../model/User.model')
 
@@ -23,6 +24,7 @@ user.get('/', async (req, res) => {
 
 user.get(
     '/:uuid',
+    auth,
     regExIntChck(uuidv4RegExp, 'fake uuid'),
     async (req, res) => {
         const { uuid } = req.params
@@ -50,16 +52,16 @@ user.post('/', async (req, res) => {
                 password,
                 picture,
             })
-            // const token = jwt.sign(
-            //   {
-            //     id: user.dataValues.uuid,
-            //     pseudo: user.dataValues.pseudo,
-            //   },
-            //   process.env.SECRET,
-            //   { expiresIn: "1h" }
-            // );
+            const token = jwt.sign(
+                {
+                    id: user.dataValues.uuid,
+                    pseudo: user.dataValues.pseudo,
+                },
+                process.env.SECRET,
+                { expiresIn: '24h' }
+            )
             const uuid = user.uuid
-            res.status(201).json({ uuid })
+            res.status(201).json({ uuid, token })
         }
     } catch (error) {
         res.status(400).json({ message: 'pseudo already taken!' })
@@ -71,16 +73,16 @@ user.post('/login', async (req, res) => {
     try {
         const user = await User.findOne({ where: { pseudo } })
         if (user.validatePassword(password)) {
-            // const token = jwt.sign(
-            //   {
-            //     id: user.dataValues.uuid,
-            //     pseudo: user.dataValues.pseudo,
-            //   },
-            //   process.env.SECRET,
-            //   { expiresIn: "2h" }
-            // );
+            const token = jwt.sign(
+                {
+                    id: user.dataValues.uuid,
+                    pseudo: user.dataValues.pseudo,
+                },
+                process.env.SECRET,
+                { expiresIn: '24h' }
+            )
             const uuid = user.uuid
-            res.status(200).json({ uuid })
+            res.status(200).json({ uuid, token })
         } else {
             throw Error.error
         }
@@ -89,13 +91,13 @@ user.post('/login', async (req, res) => {
     }
 })
 
-user.post('/:uuid/level', regExIntChck(uuidv4RegExp), async (req, res) => {
-    const { uuid } = req.params
-    try {
-        const user = await User.increment({ level: 1 }, { where: { uuid } })
-        res.status(204).end()
-    } catch (error) {
-        res.status(400).json(error)
-    }
-})
+// user.post('/:uuid/level', regExIntChck(uuidv4RegExp), async (req, res) => {
+//     const { uuid } = req.params
+//     try {
+//         const user = await User.increment({ level: 1 }, { where: { uuid } })
+//         res.status(204).end()
+//     } catch (error) {
+//         res.status(400).json(error)
+//     }
+// })
 module.exports = user

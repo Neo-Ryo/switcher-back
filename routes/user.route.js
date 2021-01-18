@@ -71,7 +71,10 @@ user.post('/', async (req, res) => {
 user.post('/login', async (req, res) => {
     const { pseudo, password } = req.body
     try {
-        const user = await User.findOne({ where: { pseudo } })
+        const user = await User.findOne({
+            where: { pseudo },
+            include: Level,
+        })
         if (user.validatePassword(password)) {
             const token = jwt.sign(
                 {
@@ -82,7 +85,8 @@ user.post('/login', async (req, res) => {
                 { expiresIn: '24h' }
             )
             const uuid = user.uuid
-            res.status(200).json({ uuid, token })
+            const level = user.Level.name
+            res.status(200).json({ uuid, level, token })
         } else {
             throw Error.error
         }

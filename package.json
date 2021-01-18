@@ -1,28 +1,34 @@
 {
-  "name": "switcher-back",
-  "version": "1.0.0",
-  "description": "API of switcher game",
-  "main": "index.js",
-  "engines": {
-    "node": "12.16.1"
-  },
-  "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^5.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "helmet": "^3.23.3",
-    "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.1.0",
-    "pg": "^8.3.0",
-    "postgres": "^1.0.2",
-    "sequelize": "^6.3.0"
-  }
+    "name": "switcher-back",
+    "version": "1.0.0",
+    "description": "API of switcher game",
+    "main": "index.js",
+    "engines": {
+        "node": "12.16.1"
+    },
+    "scripts": {
+        "dev": "nodemon index.js",
+        "start": "node index.js",
+        "test": "mocha --exit"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.0.0",
+        "chai": "^4.2.0",
+        "chai-http": "^4.3.0",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "helmet": "^3.23.3",
+        "jsonwebtoken": "^8.5.1",
+        "mysql": "^2.18.1",
+        "mysql2": "^2.1.0",
+        "pg": "^8.3.0",
+        "postgres": "^1.0.2",
+        "sequelize": "^6.3.0"
+    },
+    "devDependencies": {
+        "mocha": "^8.2.1"
+    }
 }

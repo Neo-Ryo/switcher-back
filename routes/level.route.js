@@ -47,7 +47,7 @@ level.put('/:userUuid/levelUp', auth, async (req, res) => {
         )
         res.status(200).json(levelRes)
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json(error.message)
     }
 })
 

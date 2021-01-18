@@ -2,8 +2,8 @@ GET http://localhost:8000/users
 
 ###
 
-GET http://localhost:8000/users/cdbd39f5-cfa3-4db5-a3ab-5cc5796cedb1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNkYmQzOWY1LWNmYTMtNGRiNS1hM2FiLTVjYzU3OTZjZWRiMSIsInBzZXVkbyI6Ik5lby1SeW8iLCJpYXQiOjE2MTAxMTY3MzgsImV4cCI6MTYxMDIwMzEzOH0.8qyVHzrQzDWLYwqpVy9_JKtUQnBkhXutALaHy7XgmGg
+GET http://localhost:8000/users/2fde1eb5-c808-4736-95bb-df87039a440c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJmZGUxZWI1LWM4MDgtNDczNi05NWJiLWRmODcwMzlhNDQwYyIsInBzZXVkbyI6Ik00czR0MCIsImlhdCI6MTYxMDk3NTIxMSwiZXhwIjoxNjExMDYxNjExfQ.vRxHagQXwdZC5mnsAmrJUQVN2Dw4BlKISG9yONxSf9U
 
 ###
 

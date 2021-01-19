@@ -52,6 +52,11 @@ user.post('/', async (req, res) => {
                 password,
                 picture,
             })
+            const uuid = user.uuid
+            const levelCreater = await Level.create({
+                UserUuid: uuid,
+            })
+            console.log(levelCreater)
             const token = jwt.sign(
                 {
                     id: user.dataValues.uuid,
@@ -60,8 +65,8 @@ user.post('/', async (req, res) => {
                 process.env.SECRET,
                 { expiresIn: '24h' }
             )
-            const uuid = user.uuid
-            res.status(201).json({ uuid, token })
+            const level = levelCreater.dataValues.name
+            res.status(201).json({ uuid, level, token })
         }
     } catch (error) {
         res.status(400).json({ message: 'pseudo already taken!' })

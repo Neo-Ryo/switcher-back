@@ -77,7 +77,7 @@ describe('USERS', () => {
         it('should return an uuid and a token or a message ', async () => {
             try {
                 const user = await chai.request(server).post('/users').send({
-                    pseudo: 'Testy',
+                    pseudo: 'userTest',
                     password: 'toto',
                 })
                 if (

@@ -28,7 +28,7 @@ app.get('/', function (req, res) {
 
 async function main() {
     try {
-        await sequelize.sync({ force: true })
+        await sequelize.sync()
         await sequelize.authenticate()
         console.log("You've reached switcher DB !")
         app.listen(PORT, (err) => {

@@ -91,7 +91,7 @@ user.post('/login', async (req, res) => {
             throw Error.error
         }
     } catch (error) {
-        res.status(400).json(error)
+        res.status(400).json(error.message)
     }
 })
 

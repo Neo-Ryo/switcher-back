@@ -1,6 +1,7 @@
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 const User = require('../model/User.model')
+const Level = require('../model/Level.model')
 const auth = require('../middleware/auth')
 
 let should = chai.should()
@@ -25,7 +26,7 @@ const userKeys = [
 
 describe('USERS', () => {
     before(async () => {
-        await sequelizeInstance.sync({ force: true })
+        await sequelizeInstance.sync()
         userTest = await User.findCreateFind({
             where: { pseudo: 'userTest' },
             defaults: {
@@ -33,6 +34,9 @@ describe('USERS', () => {
                 password: 'toto',
                 picture: 'https://i.imgur.com/fywaJZk.jpg',
             },
+        })
+        userTestLevelMaker = await Level.findCreateFind({
+            where: { UserUuid: userTest[0].dataValues.uuid },
         })
         token = jwt.sign(
             {
@@ -72,12 +76,10 @@ describe('USERS', () => {
     describe('post a user', () => {
         it('should return an uuid and a token or a message ', async () => {
             try {
-                const user = await chai.request(server).post('/users', {
-                    pseudo: 'xyz',
-                    password: 'test1',
+                const user = await chai.request(server).post('/users').send({
+                    pseudo: 'Testy',
+                    password: 'toto',
                 })
-                console.log('USER ===> ', user.statusCode)
-                console.log('USER MESSAGE ===> ', user.text)
                 if (
                     (user.statusCode === 400) &
                     (user.text === '{"message":"pseudo already taken!"}')
@@ -90,6 +92,22 @@ describe('USERS', () => {
                     user.body.should.be.a('object')
                     user.body.should.have.all.keys('uuid', 'token')
                 }
+            } catch (error) {
+                console.log(error)
+                throw error
+            }
+        })
+    })
+    describe('log a user', () => {
+        it('should return an uuid, level and token', async () => {
+            try {
+                const log = await chai
+                    .request(server)
+                    .post('/users/login')
+                    .send({ pseudo: 'userTest', password: 'toto' })
+                log.should.have.status(200)
+                log.body.should.be.a('object')
+                log.body.should.have.keys('uuid', 'level', 'token')
             } catch (error) {
                 throw error
             }

@@ -16,7 +16,7 @@ POST  http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "pseudo": "Miche",
+    "pseudo": "Toto",
     "password": "toto"
 }
 
@@ -37,7 +37,7 @@ POST  http://localhost:8000/users/login
 Content-Type: application/json
 
 {
-    "pseudo": "Neo-Ryo",
+    "pseudo": "Toto",
     "password": "toto"
 }
 

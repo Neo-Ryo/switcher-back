@@ -2,8 +2,13 @@ GET http://localhost:8000/users
 
 ###
 
-GET http://localhost:8000/users/2fde1eb5-c808-4736-95bb-df87039a440c
+GET http://localhost:8000/users/856cec32-364f-45d0-8995-86a523f0decb
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJmZGUxZWI1LWM4MDgtNDczNi05NWJiLWRmODcwMzlhNDQwYyIsInBzZXVkbyI6Ik00czR0MCIsImlhdCI6MTYxMDk3NTIxMSwiZXhwIjoxNjExMDYxNjExfQ.vRxHagQXwdZC5mnsAmrJUQVN2Dw4BlKISG9yONxSf9U
+
+###
+#UserTest
+GET http://localhost:8000/users/07857878-dec3-4536-a3a3-c6799799cbe7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA3ODU3ODc4LWRlYzMtNDUzNi1hM2EzLWM2Nzk5Nzk5Y2JlNyIsInBzZXVkbyI6InVzZXJUZXN0IiwiaWF0IjoxNjEwOTkwODM5LCJleHAiOjE2MTEwNzcyMzl9.SYC14kJCQNdj-1xt1wyyAcXGHBPJAiXMzG1Yme617EQ
 
 ###
 
@@ -11,9 +16,8 @@ POST  http://localhost:8000/users
 Content-Type: application/json
 
 {
-    "pseudo": "Michel1",
-    "password": "toto",
-    "picture": "https://i.imgur.com/fywaJZk.jpg"
+    "pseudo": "Miche",
+    "password": "toto"
 }
 
 ###

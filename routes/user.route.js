@@ -56,7 +56,6 @@ user.post('/', async (req, res) => {
             const levelCreater = await Level.create({
                 UserUuid: uuid,
             })
-            console.log(levelCreater)
             const token = jwt.sign(
                 {
                     id: user.dataValues.uuid,
@@ -96,7 +95,9 @@ user.post('/login', async (req, res) => {
             throw Error.error
         }
     } catch (error) {
-        res.status(400).json(error.message)
+        res.status(400).json({
+            message: 'pseudo or password incorrect, try again',
+        })
     }
 })
 

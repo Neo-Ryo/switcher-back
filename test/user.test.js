@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'test'
+
 const chai = require('chai')
 const chaiHttp = require('chai-http')
 const User = require('../model/User.model')
@@ -26,7 +28,7 @@ const userKeys = [
 
 describe('USERS', () => {
     before(async () => {
-        await sequelizeInstance.sync()
+        await sequelizeInstance.sync({ force: true })
         userTest = await User.findCreateFind({
             where: { pseudo: 'userTest' },
             defaults: {
@@ -77,21 +79,12 @@ describe('USERS', () => {
         it('should return an uuid and a token or a message ', async () => {
             try {
                 const user = await chai.request(server).post('/users').send({
-                    pseudo: 'userTest',
+                    pseudo: 'OtherUserTest',
                     password: 'toto',
                 })
-                if (
-                    (user.statusCode === 400) &
-                    (user.text === '{"message":"pseudo already taken!"}')
-                ) {
-                    user.should.have.status(400)
-                    user.body.should.be.a('object')
-                    user.body.should.have.all.keys('message')
-                } else {
-                    user.should.have.status(201)
-                    user.body.should.be.a('object')
-                    user.body.should.have.all.keys('uuid', 'token')
-                }
+                user.should.have.status(201)
+                user.body.should.be.a('object')
+                user.body.should.have.all.keys('uuid', 'level', 'token')
             } catch (error) {
                 console.log(error)
                 throw error
@@ -108,6 +101,38 @@ describe('USERS', () => {
                 log.should.have.status(200)
                 log.body.should.be.a('object')
                 log.body.should.have.keys('uuid', 'level', 'token')
+            } catch (error) {
+                throw error
+            }
+        })
+    })
+    describe('fail to get a specific user because of no token provided', () => {
+        it('should return a status 401', async () => {
+            try {
+                const log = await chai
+                    .request(server)
+                    .get(`/users/${userTest[0].dataValues.uuid}`)
+                log.should.have.status(401)
+                log.body.should.be.a('object')
+                log.body.should.have.keys('message')
+            } catch (error) {
+                throw error
+            }
+        })
+    })
+    describe('fail to log in', () => {
+        it('should return a status 400', async () => {
+            try {
+                const log = await chai
+                    .request(server)
+                    .post(`/users/login`)
+                    .send({
+                        pseudo: 'f4k3Ps3ud0Th4tN00n3W1llN3v3rUs3',
+                        password: 'f4k3P4ssw0rdTh4tN00n3W1llN3v3rUs3',
+                    })
+                log.should.have.status(400)
+                log.body.should.be.a('object')
+                log.body.should.have.keys('message')
             } catch (error) {
                 throw error
             }

@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
-// const helmet = require("helmet");
+const helmet = require('helmet')
 
 const sequelize = require('./sequelize')
 require('./association')
@@ -16,7 +16,7 @@ const env = process.env.NODE_ENV
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
-// app.use(helmet());
+app.use(helmet())
 app.use(express.json())
 
 app.use('/users', user)

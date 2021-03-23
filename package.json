@@ -9,7 +9,7 @@
     "scripts": {
         "dev": "nodemon index.js",
         "start": "node index.js",
-        "test": "mocha --exit"
+        "test": "NODE_ENV=test mocha --exit"
     },
     "author": "",
     "license": "ISC",

@@ -1,25 +1,32 @@
-require("dotenv").config();
-const Sequelize = require("sequelize");
+require('dotenv').config()
+const Sequelize = require('sequelize')
 const {
-  DB_DATABASE,
-  DB_USER,
-  DB_PASSWORD,
-  NODE_ENV,
-  DB_TEST,
-  DB_HOST,
-} = process.env;
+    DB_DATABASE,
+    DB_USER,
+    DB_PASSWORD,
+    NODE_ENV,
+    DB_TEST,
+    DB_HOST,
+} = process.env
 
 if (process.env.DATABASE_URL) {
-  module.exports = new Sequelize(process.env.DATABASE_URL, {
-    dialect: "postgres",
-  });
+    module.exports = new Sequelize(process.env.DATABASE_URL, {
+        dialect: 'postgres',
+        protocol: 'postgres',
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false,
+            },
+        },
+    })
 } else {
-  module.exports = new Sequelize({
-    host: DB_HOST,
-    username: DB_USER,
-    password: DB_PASSWORD,
-    database: NODE_ENV !== "test" ? DB_DATABASE : DB_TEST,
-    dialect: "mysql",
-    logging: false,
-  });
+    module.exports = new Sequelize({
+        host: DB_HOST,
+        username: DB_USER,
+        password: DB_PASSWORD,
+        database: NODE_ENV !== 'test' ? DB_DATABASE : DB_TEST,
+        dialect: 'mysql',
+        logging: false,
+    })
 }
